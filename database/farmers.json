@@ -1,0 +1,4 @@
+[
+  {"id": 1, "name": "Murugan", "location": "Pattukkottai", "crop": "Paddy", "status": "Active"},
+  {"id": 2, "name": "Kannan", "location": "Orathanadu", "crop": "Coconut", "status": "Active"}
+]

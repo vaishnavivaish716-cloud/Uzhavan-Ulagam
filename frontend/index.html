@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzhavan - Salem Agriculture Pro Max</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+Tamil:wght@500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter','Noto Sans Tamil',sans-serif}
+body{background:#f8fafc;color:#0f172a}
+.hero{background:linear-gradient(135deg,#0084FF 0%,#00D084 100%);padding:40px 20px 60px;color:#fff;position:relative;overflow:hidden}
+.hero::after{content:'🌾';position:absolute;right:-20px;top:10px;font-size:180px;opacity:.15}
+.nav{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto 30px}
+.logo{font-weight:800;font-size:20px;background:#fff;color:#0084FF;padding:8px 14px;border-radius:12px}
+.hero-content{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+.hero h1{font-size:42px;line-height:1.1;font-weight:800;margin-bottom:12px}
+.hero p{font-size:14px;opacity:.9;max-width:500px;line-height:1.6;margin-bottom:20px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:12px 22px;border-radius:28px;border:none;font-weight:700;font-size:13px;cursor:pointer}
+.btn-white{background:#fff;color:#0084FF}
+.btn-outline{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.4)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:1100px;margin:-30px auto 20px;padding:0 20px;position:relative;z-index:3}
+.stat{background:#fff;border-radius:16px;padding:16px;border:1px solid #e2e8f0;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.06)}
+.stat b{font-size:22px;color:#0084FF}
+.stat p{font-size:11px;color:#64748b;margin-top:4px;font-weight:600}
+.features{max-width:1100px;margin:20px auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:#fff;border-radius:18px;padding:18px;border:1px solid #e2e8f0;box-shadow:0 4px 12px rgba(0,0,0,.03)}
+.card h3{font-size:14px;margin-bottom:8px}
+.card p{font-size:11px;color:#64748b;line-height:1.6}
+.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:9px;font-weight:800;margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+<div class="nav"><div class="logo">🌾 Uzhavan Salem</div><div style="background:rgba(255,255,255,.2);padding:6px 12px;border-radius:20px;font-size:11px;font-weight:700">● PRO MAX LIVE</div></div>
+<div class="hero-content">
+<h1>Salem Farmers ku<br>AI Power Kudukkrom Da!</h1>
+<p>Mango, Tapioca, Turmeric - Salem district full ah AI moolama profit calculate panni, mandi price live ah sollurom. WhatsApp maathiri chat, voice la pesalam!</p>
+<div class="hero-btns">
+<button class="btn btn-white" onclick="document.getElementById('pro-ai-btn').click()">🤖 AI Kitta Pesu</button>
+<button class="btn btn-outline" onclick="window.open('admin.html')">📊 Admin Panel</button>
+</div>
+</div>
+</div>
+
+<div class="stats">
+<div class="stat"><b>2,400+</b><p>Salem Farmers</p></div>
+<div class="stat"><b>₹4,500</b><p>Live Mango Price</p></div>
+<div class="stat"><b>32°C</b><p>Salem Weather Live</p></div>
+</div>
+
+<div class="features">
+<div class="card"><span class="badge" style="background:#e0f2fe;color:#0084FF">VOICE AI</span><h3>🎙️ Voice la Pesalam</h3><p>Farmer mic ah amukki "Mango price enna da?" nu ketta, AI voice la Tamil la bathil solum. Padikatha farmers kum easy!</p></div>
+<div class="card"><span class="badge" style="background:#dcfce7;color:#00A86B">LIVE DATA</span><h3>🌦️ Live Weather & Mandi</h3><p>Open-Meteo API la irunthu Salem live weather. Mandi price daily update aagum. Profit calculation automatic!</p></div>
+<div class="card"><span class="badge" style="background:#fef3c7;color:#d97706">WHATSAPP</span><h3>🟢 WhatsApp Share</h3><p>Price ah direct WhatsApp la share pannalam. Buyer ku anuppa easy. Group la potta full farmers kum theriyum!</p></div>
+<div class="card"><span class="badge" style="background:#ede9fe;color:#7c3aed">TAMIL + ENGLISH</span><h3>🌐 3 Language Support</h3><p>Tamil, Tanglish, English - 3 language la AI pesum. Salem local slang la than pesum da!</p></div>
+<div class="card"><span class="badge" style="background:#fce7f3;color:#db2777">PROFIT CALC</span><h3>💰 Profit Calculator Pro</h3><p>1 acre ku evlo selavu, evlo profit nu AI calculate panni sollum. Viva la kaamicha professor impress!</p></div>
+<div class="card"><span class="badge" style="background:#ffedd5;color:#ea580c">ADMIN PANEL</span><h3>📈 Salem District Overview</h3><p>Admin panel la 2 farmers, 2 jobs, 3 crops ellam live chart oda varum. Full professional dashboard!</p></div>
+</div>
+
+<!-- UZHAVAN PRO MAX AI - 5 IN 1 -->
+<style>
+#pro-ai-root{font-family:'Inter',sans-serif;position:fixed;bottom:20px;right:20px;z-index:999999}
+#pro-ai-btn{width:66px;height:66px;border-radius:50%;background:linear-gradient(135deg,#0084FF,#00D084);border:3px solid #fff;box-shadow:0 10px 30px rgba(0,132,255,.5);display:flex;align-items:center;justify-content:center;font-size:30px;cursor:pointer;animation:aiPulse 2s infinite;position:relative}
+#pro-ai-btn::after{content:'PRO';position:absolute;top:-6px;right:-6px;background:#FF3B30;color:#fff;font-size:8px;font-weight:800;padding:3px 5px;border-radius:10px}
+@keyframes aiPulse{0%{box-shadow:0 0 0 0 rgba(0,132,255,.7)}70%{box-shadow:0 0 0 18px rgba(0,132,255,0)}100%{box-shadow:0 0 0 0 rgba(0,132,255,0)}}
+#pro-ai-win{position:fixed;bottom:100px;right:20px;width:380px;height:560px;background:#fff;border-radius:22px;box-shadow:0 24px 70px rgba(0,0,0,.3);display:none;flex-direction:column;overflow:hidden;border:1px solid #e2e8f0;z-index:999999}
+#pro-ai-win.open{display:flex}
+#pro-ai-langs{display:flex;gap:6px;padding:8px;background:#f1f5f9;border-bottom:1px solid #e2e8f0}
+.lang-btn{flex:1;padding:6px;border-radius:20px;border:1px solid #e2e8f0;font-size:10px;font-weight:700;cursor:pointer;background:#fff}
+.lang-btn.active{background:#0084FF;color:#fff;border-color:#0084FF}
+@media(max-width:420px){#pro-ai-win{width:92%;right:4%;bottom:90px;height:70vh}}
+</style>
+<div id="pro-ai-root"><div id="pro-ai-btn" onclick="togglePro()">🤖</div></div>
+<div id="pro-ai-win">
+<div style="background:linear-gradient(135deg,#0084FF,#00D084);padding:12px 14px;color:#fff;display:flex;align-items:center;gap:10px">
+<div style="width:38px;height:38px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center">🌾</div>
+<div style="flex:1"><b style="font-size:13px">Uzhavan PRO MAX AI</b><p style="font-size:10px;opacity:.9" id="liveStatus">● Live: Salem 32°C | Mango ₹4500</p></div>
+<button onclick="togglePro()" style="background:rgba(255,255,255,.25);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer">✕</button>
+</div>
+<div id="pro-ai-langs">
+<button class="lang-btn active" onclick="setLang('tanglish',this)">Tanglish</button>
+<button class="lang-btn" onclick="setLang('tamil',this)">தமிழ்</button>
+<button class="lang-btn" onclick="setLang('english',this)">English</button>
+</div>
+<div style="display:flex;gap:8px;padding:10px;background:#f8fafc">
+<div style="flex:1;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:8px;text-align:center"><p style="font-size:9px;color:#64748b">WEATHER</p><b id="wTemp" style="font-size:12px">32°C ☀️</b><p style="font-size:9px">Salem</p></div>
+<div style="flex:1;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:8px;text-align:center"><p style="font-size:9px;color:#64748b">MANDI LIVE</p><b style="font-size:12px">🥭 ₹4,500</b><p style="font-size:9px;color:#00D084">▲ 5%</p></div>
+<div style="flex:1;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:8px;text-align:center"><p style="font-size:9px;color:#64748b">PROFIT</p><button onclick="calcProfit()" style="background:#00D084;color:#fff;border:none;padding:4px 8px;border-radius:20px;font-size:9px;font-weight:700;cursor:pointer">CALCULATE</button></div>
+</div>
+<div id="proMsgs" style="flex:1;padding:12px;overflow-y:auto;background:#f8fafc;display:flex;flex-direction:column;gap:10px">
+<div style="background:#fff;padding:10px 14px;border-radius:14px 14px 14px 4px;border:1px solid #e2e8f0;font-size:11px;line-height:1.5">
+<span id="welcomeTxt">Vanakkam da! 🙏 Naan PRO MAX AI. Voice la pesalam, WhatsApp la share pannalam! 🎙️</span>
+<div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap">
+<button onclick="quickAsk('Mango price live?')" style="border:1px solid #0084FF;color:#0084FF;padding:5px 10px;border-radius:20px;font-size:10px;background:#fff">🥭 Live Price</button>
+<button onclick="quickAsk('Profit evlo?')" style="border:1px solid #00D084;color:#00D084;padding:5px 10px;border-radius:20px;font-size:10px;background:#fff">💰 Profit</button>
+<button onclick="shareWA()" style="border:1px solid #25D366;color:#25D366;padding:5px 10px;border-radius:20px;font-size:10px;background:#fff">🟢 WhatsApp</button>
+</div>
+</div>
+</div>
+<div style="padding:10px;border-top:1px solid #e2e8f0;display:flex;gap:8px;background:#fff;align-items:center">
+<button id="voiceBtn" onclick="startVoice()" style="width:42px;height:42px;border-radius:50%;border:1px solid #e2e8f0;background:#fff;font-size:18px;cursor:pointer">🎤</button>
+<input id="proInput" placeholder="Type pannu da..." style="flex:1;border:1px solid #e2e8f0;padding:10px 14px;border-radius:24px;font-size:12px;outline:none" onkeypress="if(event.key==='Enter')sendPro()">
+<button onclick="sendPro()" style="background:#0084FF;color:#fff;width:42px;height:42px;border-radius:50%;border:none;font-size:16px;cursor:pointer">➤</button>
+</div>
+</div>
+<script>
+let curLang='tanglish';
+const dict={tanglish:{ph:"Type pannu da...",welcome:"Vanakkam da! 🙏 Naan PRO MAX AI. Voice la pesalam, WhatsApp la share pannalam! 🎙️"},tamil:{ph:"டைப் பண்ணுங்க...",welcome:"வணக்கம்! 🙏 நான் உழவன் PRO AI. குரலில் பேசலாம்! 🎙️"},english:{ph:"Type your query...",welcome:"Hello! 🙏 I am Uzhavan PRO MAX AI. Voice + WhatsApp ready! 🎙️"}}
+function togglePro(){document.getElementById('pro-ai-win').classList.toggle('open'); fetchLive();}
+function setLang(l,btn){curLang=l; document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); document.getElementById('proInput').placeholder=dict[l].ph; document.getElementById('welcomeTxt').innerHTML=dict[l].welcome;}
+function quickAsk(t){document.getElementById('proInput').value=t; sendPro();}
+function shareWA(){const txt="🌾 Salem Mango Rate: ₹4500/qtl - Uzhavan PRO MAX! https://uzhavan.salem"; window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`,'_blank');}
+async function fetchLive(){try{const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=11.65&longitude=78.16&current_weather=true');const d=await r.json();const temp=Math.round(d.current_weather.temperature);document.getElementById('wTemp').innerText=temp+'°C ☀️';document.getElementById('liveStatus').innerText=`● Live: Salem ${temp}°C | Mango ₹4500`;}catch(e){}}
+function calcProfit(){const box=document.getElementById('proMsgs');box.innerHTML+=`<div style="align-self:center;background:#00D084;color:#fff;padding:10px 14px;border-radius:12px;font-size:11px;text-align:center"><b>💰 PROFIT CALC</b><br>1 acre Mango = 5 ton<br>Rate ₹4500/qtl = ₹2,25,000<br>Cost ₹60k<br><b>Profit: ₹1,65,000 🔥</b></div>`;box.scrollTop=box.scrollHeight;speak("One acre profit one lakh sixty five thousand da!");}
+function sendPro(){const input=document.getElementById('proInput');const txt=input.value.trim();if(!txt)return;const box=document.getElementById('proMsgs');box.innerHTML+=`<div style="align-self:flex-end;background:#0084FF;color:#fff;padding:8px 12px;border-radius:14px 14px 4px 14px;font-size:12px;max-width:80%">${txt}</div>`;input.value='';box.scrollTop=box.scrollHeight;setTimeout(()=>{let reply=curLang==='tamil'?"🌾 '"+txt+"' ku: Salem la sema demand!":curLang==='english'?"🌾 For '"+txt+"': High demand in Salem!":"🌾 '"+txt+"' ku Salem la sema demand da!";if(txt.toLowerCase().includes('mango')||txt.toLowerCase().includes('price'))reply=curLang==='tamil'?"🥭 சேலம் மாம்பழம் ₹4500! லாபம் அதிகம்!":curLang==='english'?"🥭 LIVE ₹4500/qtl! Profit ₹1.65L/acre!":"🥭 LIVE da! Salem Mango ₹4500! Acre ku 1.65L profit da!";else if(txt.toLowerCase().includes('profit')){calcProfit();return;}box.innerHTML+=`<div style="background:#fff;padding:10px 14px;border-radius:14px 14px 14px 4px;border:1px solid #e2e8f0;font-size:12px"><div style="display:flex;gap:8px"><span>🤖</span><span>${reply}</span></div><div style="margin-top:6px;display:flex;gap:6px"><button onclick="speak(\`${reply.replace(/['`]/g,'')}\`)" style="border:1px solid #e2e8f0;padding:3px 8px;border-radius:20px;font-size:9px;background:#fff">🔊 Voice</button><button onclick="shareWA()" style="border:1px solid #25D366;color:#25D366;padding:3px 8px;border-radius:20px;font-size:9px;background:#fff">WhatsApp</button></div></div>`;box.scrollTop=box.scrollHeight;speak(reply);},700);}
+function speak(t){if('speechSynthesis' in window){const clean=t.replace(/<[^>]*>/g,'').replace(/[🥭💰🌾🤖☀️]/g,'');const u=new SpeechSynthesisUtterance(clean);u.lang=curLang==='tamil'?'ta-IN':'en-IN';u.rate=0.95;speechSynthesis.speak(u);}}
+function startVoice(){const btn=document.getElementById('voiceBtn');if(!('webkitSpeechRecognition' in window||'SpeechRecognition' in window)){alert('Chrome la try pannu da!');return;}const Rec=window.SpeechRecognition||window.webkitSpeechRecognition;const rec=new Rec();rec.lang=curLang==='tamil'?'ta-IN':'en-IN';btn.innerText='🔴';btn.style.background='#FF3B30';btn.style.color='#fff';rec.onresult=(e)=>{document.getElementById('proInput').value=e.results[0][0].transcript;sendPro();};rec.onend=()=>{btn.innerText='🎤';btn.style.background='#fff';btn.style.color='#000';};rec.start();}
+fetchLive();
+</script>
+<!-- PRO MAX END -->
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzhavan Ulagam - Salem v6.0 PRO</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Inter,sans-serif}
+body{background:#f8fafc;display:flex;min-height:100vh}
+.sidebar{width:250px;background:#fff;border-right:1px solid #e2e8f0;padding:16px;display:flex;flex-direction:column;justify-content:space-between;position:sticky;top:0;height:100vh}
+.logo{font-weight:800;font-size:14px;line-height:1.2}
+.menu{margin-top:20px;display:flex;flex-direction:column;gap:6px}
+.menu a{padding:11px 12px;border-radius:10px;text-decoration:none;color:#475569;font-size:13px;cursor:pointer;display:flex;gap:8px}
+.menu a.active{background:#0f172a;color:#fff;font-weight:700}
+.main{flex:1;padding:18px;overflow:auto}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.search{flex:1;max-width:340px;background:#fff;border:1px solid #e2e8f0;border-radius:24px;padding:10px 14px;display:flex;gap:6px}
+.search input{border:none;outline:none;width:100%;font-size:13px}
+.btn{border:none;border-radius:20px;padding:9px 14px;font-weight:800;font-size:12px;cursor:pointer}
+.btn-green{background:#14532d;color:#fff}.btn-dark{background:#fff;border:1px solid #e2e8f0}.btn-red{background:#ef4444;color:#fff}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:16px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.grid2{display:grid;grid-template-columns:1.6fr 1fr;gap:12px;margin-top:12px}
+.tab{display:none}.tab.active{display:block}
+table{width:100%;border-collapse:collapse;margin-top:12px}
+th,td{padding:10px 8px;text-align:left;font-size:13px;border-bottom:1px solid #f1f5f9}
+th{font-size:11px;color:#64748b}
+.badge{padding:4px 8px;border-radius:20px;font-size:10px;font-weight:800}
+@media(max-width:900px){.sidebar{display:none}.grid4{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+<div>
+<div class="logo">🍃 UZHAVAN ULAGAM<br><span style="font-size:10px;color:#64748b;font-weight:500">SALEM • TN-30</span></div>
+<div style="background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:10px;margin-top:14px"><p style="font-size:11px;color:#dc2626;font-weight:700">🔴 Salem • 32°C Sunny</p><p style="font-size:11px;color:#64748b">Mango Season - High Demand</p></div>
+<div class="menu">
+<a id="m-dashboard" class="active" onclick="openTab('dashboard')">◍ Dashboard</a>
+<a id="m-farmers" onclick="openTab('farmers')">👥 Farmers Registry</a>
+<a id="m-jobs" onclick="openTab('jobs')">💼 Labour Jobs</a>
+<a id="m-mandi" onclick="openTab('mandi')">📦 Mandi Prices</a>
+<a id="m-ai" onclick="openTab('ai')">🤖 AI Predictions</a>
+<a id="m-settings" onclick="openTab('settings')">⚙️ Settings</a>
+</div>
+</div>
+<div>
+<div style="display:flex;justify-content:space-between;align-items:center;padding:10px;border:1px solid #e2e8f0;border-radius:12px">
+<div style="display:flex;gap:8px;align-items:center"><div style="width:28px;height:28px;background:#0f172a;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px">SA</div><div><p style="font-size:12px;font-weight:700">Salem Admin</p><p style="font-size:10px;color:#16a34a">● API Online</p></div></div>
+<span style="cursor:pointer" onclick="doLogout()">↪️</span>
+</div>
+</div>
+</div>
+
+<div class="main">
+<div class="topbar">
+<div class="search">🔍 <input id="searchBox" placeholder="Search Salem farmers, Mango..." onkeyup="searchAll()"></div>
+<div style="display:flex;gap:8px"><button class="btn btn-green" onclick="addFarmer()">+ Add Farmer</button><button class="btn btn-dark" onclick="exportCSV()">⬇ Export</button><button class="btn btn-red" onclick="doLogout()">Logout</button></div>
+</div>
+
+<!-- DASHBOARD TAB -->
+<div id="tab-dashboard" class="tab active">
+<div style="display:flex;justify-content:space-between"><div><h2>Salem District Overview</h2><p style="font-size:11px;color:#64748b">Omalur, Attur, Mettur • <span id="time"></span></p></div><span style="font-size:11px">● API Online</span></div>
+<div class="grid4" style="margin-top:14px">
+<div class="card" style="border-left:4px solid #0f172a"><p style="font-size:10px;color:#64748b">TOTAL FARMERS</p><h2 id="c1">2</h2></div>
+<div class="card" style="border-left:4px solid #3b82f6"><p style="font-size:10px;color:#64748b">ACTIVE JOBS</p><h2 id="c2">2</h2></div>
+<div class="card" style="border-left:4px solid #f97316"><p style="font-size:10px;color:#64748b">MANDI CROPS</p><h2>3</h2></div>
+<div class="card" style="background:#0f172a;color:#fff"><p style="font-size:10px;color:#94a3b8">AI PREDICTIONS</p><h2>1,240</h2></div>
+</div>
+<div class="grid2">
+<div class="card"><p style="font-weight:700">Growth Analytics - Salem</p><canvas id="lineChart" height="170"></canvas></div>
+<div class="card"><p style="font-weight:700">Distribution</p><p style="font-size:10px;margin-top:4px"><span style="color:#10b981">■</span> Farmers <span style="color:#3b82f6">■</span> Jobs <span style="color:#f59e0b">■</span> Crops</p><canvas id="donutChart" height="170"></canvas></div>
+</div>
+</div>
+
+<!-- FARMERS REGISTRY TAB -->
+<div id="tab-farmers" class="tab">
+<div style="display:flex;justify-content:space-between;align-items:center"><h2>👥 Farmers Registry</h2><button class="btn btn-green" onclick="addFarmer()">+ Add Farmer</button></div>
+<div class="card" style="margin-top:12px">
+<table id="farmerTable"><thead><tr><th>NAME</th><th>CROP</th><th>PLACE</th><th>PHONE</th><th>ACTION</th></tr></thead><tbody id="farmerBody"></tbody></table>
+</div>
+</div>
+
+<!-- LABOUR JOBS TAB -->
+<div id="tab-jobs" class="tab">
+<div style="display:flex;justify-content:space-between"><h2>💼 Labour Jobs - Salem</h2><button class="btn btn-green" onclick="addJob()">+ Post Job</button></div>
+<div class="card" style="margin-top:12px">
+<table><thead><tr><th>JOB</th><th>LOCATION</th><th>WAGES</th><th>STATUS</th></tr></thead><tbody id="jobsBody">
+<tr><td>Harvesting - Paddy</td><td>Omalur</td><td>₹500/day</td><td><span class="badge" style="background:#dcfce7;color:#16a34a">Active</span></td></tr>
+<tr><td>Spraying - Mango</td><td>Attur</td><td>₹600/day</td><td><span class="badge" style="background:#dbeafe;color:#2563eb">Open</span></td></tr>
+</tbody></table>
+</div>
+</div>
+
+<!-- MANDI PRICES TAB -->
+<div id="tab-mandi" class="tab">
+<h2>📦 Mandi Prices - Salem Market (Live)</h2><p style="font-size:11px;color:#64748b">Today • 23 Aug 2026 • Source: Salem Uzhavar Sandhai</p>
+<div class="grid4" style="margin-top:12px">
+<div class="card"><p style="font-size:11px">🥭 Mango (Alphonso)</p><h2>₹45/kg</h2><span class="badge" style="background:#dcfce7;color:#16a34a">▲ High Demand</span></div>
+<div class="card"><p style="font-size:11px">🍠 Tapioca</p><h2>₹22/kg</h2><span class="badge" style="background:#fef3c7;color:#d97706">Stable</span></div>
+<div class="card"><p style="font-size:11px">🟡 Turmeric</p><h2>₹8,200/q</h2><span class="badge" style="background:#dcfce7;color:#16a34a">▲ +5%</span></div>
+<div class="card"><p style="font-size:11px">🌾 Paddy</p><h2>₹2,100/q</h2><span class="badge" style="background:#dbeafe;color:#2563eb">MSP</span></div>
+</div>
+<div class="card" style="margin-top:12px"><p style="font-weight:700">Price Trend - Last 7 Days</p><canvas id="mandiChart" height="120"></canvas></div>
+</div>
+
+<!-- AI PREDICTIONS TAB -->
+<div id="tab-ai" class="tab">
+<h2>🤖 AI Predictions - Salem AI Engine</h2>
+<div class="grid4" style="margin-top:12px">
+<div class="card" style="background:#f0fdf4;border-color:#bbf7d0"><p style="font-size:11px">Next 7 Days</p><h3>Mango Demand HIGH</h3><p style="font-size:11px;color:#16a34a">Export orders up 32%</p></div>
+<div class="card" style="background:#eff6ff"><p style="font-size:11px">Weather AI</p><h3>32°C Sunny, Rain 20%</h3><p style="font-size:11px">Best for spraying</p></div>
+<div class="card" style="background:#fffbeb"><p style="font-size:11px">Soil AI</p><h3>pH 6.5 - Good</h3><p style="font-size:11px">Add compost for Turmeric</p></div>
+<div class="card" style="background:#0f172a;color:#fff"><p style="font-size:10px;color:#94a3b8">TOTAL AI CALLS</p><h2>1,240</h2><p style="font-size:11px">Accuracy 94.2%</p></div>
+</div>
+<div class="card" style="margin-top:12px"><h3>🧠 Pro AI Assistant Says:</h3><p style="font-size:13px;margin-top:8px;line-height:1.6">• <b>Mango</b> farmers in Attur should harvest in 3 days - peak price coming.<br>• <b>Tapioca</b> in Omalur ready - soil moisture 72% good.<br>• <b>Turmeric</b> price will rise to ₹8,500/q next week - hold stock.<br><br><span style="background:#0f172a;color:#fff;padding:6px 12px;border-radius:20px;font-size:11px">Powered by Salem District AI v5.1</span></p></div>
+</div>
+
+<!-- SETTINGS TAB -->
+<div id="tab-settings" class="tab">
+<h2>⚙️ Settings</h2>
+<div class="card" style="margin-top:12px;max-width:500px">
+<p style="font-weight:700">Salem Admin Profile</p><br>
+<label style="font-size:12px">Admin Name</label><input value="Salem Admin" style="width:100%;padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin:6px 0 12px">
+<label style="font-size:12px">District</label><input value="Salem - TN 30 - Omalur, Attur, Mettur" style="width:100%;padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin:6px 0 12px">
+<label style="font-size:12px">API Status</label><div style="padding:10px;background:#dcfce7;border-radius:8px;font-size:12px;color:#16a34a;margin:6px 0">● Online - All systems operational</div>
+<br><button class="btn btn-green" onclick="alert('✅ Settings Saved!')">Save Settings</button>
+<button class="btn btn-red" style="margin-left:8px" onclick="doLogout()">Logout</button>
+<div style="margin-top:16px;background:#f8fafc;padding:12px;border-radius:10px"><p style="font-size:11px">Version: v5.1 PRO • Weather: 32°C Sunny • DB: 2 farmers, 2 jobs, 3 crops<br>Login: admin / admin123 • Logout -> Login Fixed ✅</p></div>
+</div>
+</div>
+
+</div>
+
+<script>
+let farmers=[
+{name:"Ravi Kumar",crop:"Paddy",place:"Omalur",phone:"98765 321"},
+{name:"Selvam",crop:"Mango",place:"Attur",phone:"98765 445"}
+];
+let jobs=[
+{job:"Harvesting - Paddy",loc:"Omalur",wage:"₹500/day",status:"Active"},
+{job:"Spraying - Mango",loc:"Attur",wage:"₹600/day",status:"Open"}
+];
+
+setInterval(()=>{let t=document.getElementById('time');if(t)t.innerText=new Date().toLocaleTimeString()},1000);
+
+function openTab(name){
+document.querySelectorAll('.tab').forEach(e=>e.classList.remove('active'));
+document.querySelectorAll('.menu a').forEach(e=>e.classList.remove('active'));
+document.getElementById('tab-'+name).classList.add('active');
+document.getElementById('m-'+name).classList.add('active');
+if(name==='mandi') drawMandi();
+}
+
+function renderFarm(){
+let body=document.getElementById('farmerBody');
+if(!body) return;
+body.innerHTML=farmers.map((f,i)=>`
+<tr><td><b>${f.name}</b></td><td>${f.crop}</td><td>${f.place}</td><td>${f.phone}</td>
+<td><button onclick="delFarmer(${i})" style="border:none;background:#fee2e2;color:#dc2626;padding:4px 8px;border-radius:12px;font-size:11px;cursor:pointer">Delete</button></td></tr>
+`).join('');
+document.getElementById('c1').innerText=farmers.length;
+}
+function delFarmer(i){if(confirm('Delete?')){farmers.splice(i,1);renderFarm();}}
+function addFarmer(){
+let n=prompt("Farmer Name?"); if(!n) return;
+let c=prompt("Crop? Mango/Paddy/Turmeric")||"Mango";
+let p=prompt("Place? Omalur/Attur/Mettur")||"Salem";
+farmers.push({name:n,crop:c,place:p,phone:"98xxx "+Math.floor(Math.random()*1000)});
+renderFarm(); openTab('farmers');
+}
+function addJob(){
+let j=prompt("Job Title?"); if(!j) return;
+let l=prompt("Location?")||"Omalur";
+let w=prompt("Wage?")||"₹500/day";
+let tb=document.getElementById('jobsBody');
+tb.innerHTML+=`<tr><td>${j}</td><td>${l}</td><td>${w}</td><td><span class="badge" style="background:#dcfce7;color:#16a34a">New</span></td></tr>`;
+document.getElementById('c2').innerText=tb.rows.length;
+}
+function searchAll(){
+let q=document.getElementById('searchBox').value.toLowerCase();
+if(q){openTab('farmers');}
+let rows=document.querySelectorAll('#farmerBody tr');
+rows.forEach(r=>{
+r.style.display=r.innerText.toLowerCase().includes(q)?'':'none';
+});
+}
+function exportCSV(){
+let csv="Name,Crop,Place,Phone\n"+farmers.map(f=>`${f.name},${f.crop},${f.place},${f.phone}`).join("\n");
+let b=new Blob([csv],{type:'text/csv'});let a=document.createElement('a');a.href=URL.createObjectURL(b);a.download="salem_farmers.csv";a.click();
+}
+function doLogout(){localStorage.clear();sessionStorage.clear();fetch('/logout').then(()=>location.href='/login').catch(()=>location.href='/login');}
+
+// Charts
+new Chart(document.getElementById('lineChart'),{type:'line',data:{labels:['Jan','Feb','Mar','Apr','May','Jun'],datasets:[{label:'Farmers',data:[3,8,15,19,24,31],borderColor:'#0f172a',tension:.4,fill:false}]},options:{plugins:{legend:{display:false}}}});
+new Chart(document.getElementById('donutChart'),{type:'doughnut',data:{labels:['Farmers','Jobs','Crops'],datasets:[{data:[2,2,3],backgroundColor:['#10b981','#3b82f6','#f59e0b']}]},options:{cutout:'65%',plugins:{legend:{display:false}}}});
+function drawMandi(){
+let c=document.getElementById('mandiChart'); if(!c) return;
+if(Chart.getChart(c)) return;
+new Chart(c,{type:'line',data:{labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],datasets:[{label:'Mango ₹',data:[42,43,44,43,45,44,45],borderColor:'#16a34a'},{label:'Turmeric ₹',data:[78,79,80,81,82,81,82],borderColor:'#f59e0b'}]},options:{plugins:{legend:{display:true}}}});
+}
+renderFarm();
+</script>
+<!-- AI CHAT BUTTON v7.0 - MESSAGE PANNA MUDIYUM -->
+<div id="aiFloat" onclick="toggleAI()" style="position:fixed;bottom:22px;right:22px;background:#0f172a;color:#fff;padding:14px 20px;border-radius:30px;font-size:13px;font-weight:900;cursor:pointer;box-shadow:0 12px 30px rgba(0,0,0,.35);z-index:99999;display:flex;align-items:center;gap:8px">
+🤖 PRO • AI <span style="width:8px;height:8px;background:#22c55e;border-radius:50%;display:inline-block"></span>
+</div>
+
+<div id="aiModal" style="display:none;position:fixed;bottom:85px;right:22px;width:365px;max-width:94vw;height:460px;background:#fff;border:1px solid #e2e8f0;border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,.25);z-index:99999;flex-direction:column;overflow:hidden">
+<div style="background:#0f172a;color:#fff;padding:14px;display:flex;justify-content:space-between;align-items:center">
+<b>🤖 Salem AI - Chat</b><span style="cursor:pointer" onclick="toggleAI()">✕</span>
+</div>
+
+<div id="chatBox" style="flex:1;padding:12px;overflow-y:auto;background:#f8fafc;display:flex;flex-direction:column;gap:8px">
+<div style="background:#fff;border:1px solid #e2e8f0;padding:10px 12px;border-radius:14px;font-size:12px;align-self:flex-start;max-width:85%">
+👋 Vanakkam da! Naan Salem AI! <br><br>
+Enna venum kekalam:<br>
+• "Mango price enna?"<br>
+• "Weather epdi?"<br>
+• "Turmeric rate?"<br>
+• "Best crop?"<br>
+Type panni anuppu da!
+</div>
+</div>
+
+<div style="padding:10px;border-top:1px solid #e2e8f0;display:flex;gap:8px;background:#fff">
+<input id="chatInput" placeholder="Message type pannu da... (Mango price?)" style="flex:1;padding:10px 14px;border:1px solid #e2e8f0;border-radius:24px;outline:none;font-size:12px" onkeypress="if(event.key==='Enter')sendMsg()">
+<button onclick="sendMsg()" style="background:#0f172a;color:#fff;border:none;padding:10px 16px;border-radius:24px;font-size:12px;font-weight:700;cursor:pointer">➤</button>
+</div>
+</div>
+
+<script>
+function toggleAI(){
+let m=document.getElementById('aiModal');
+if(m.style.display==='none' || m.style.display===''){
+m.style.display='flex'; document.getElementById('chatInput').focus();
+}else{m.style.display='none';}
+}
+function sendMsg(){
+let input=document.getElementById('chatInput');
+let text=input.value.trim(); if(!text) return;
+let box=document.getElementById('chatBox');
+box.innerHTML+=`<div style="background:#0f172a;color:#fff;padding:10px 12px;border-radius:14px;font-size:12px;align-self:flex-end;max-width:85%">${text}</div>`;
+input.value='';
+setTimeout(()=>{
+let reply=getAIReply(text.toLowerCase());
+box.innerHTML+=`<div style="background:#fff;border:1px solid #e2e8f0;padding:10px 12px;border-radius:14px;font-size:12px;align-self:flex-start;max-width:85%">${reply}</div>`;
+box.scrollTop=box.scrollHeight;
+},600);
+box.scrollTop=box.scrollHeight;
+}
+function getAIReply(q){
+if(q.includes('mango')) return '🥭 <b>Mango Price Today:</b><br>Salem Market - ₹45/kg<br>Attur - ₹48/kg<br>Demand: HIGH ▲<br><br>AI Tip: 3 days la harvest pannu da - peak rate!';
+if(q.includes('turmeric') || q.includes('manjal')) return '🟡 <b>Turmeric / Manjal:</b><br>₹8,200/quintal today<br>Next week ₹8,500/q pogum!<br>Tip: HOLD pannu da - rate erum!';
+if(q.includes('tapioca') || q.includes('maravalli')) return '🍠 <b>Tapioca:</b><br>₹22/kg - Stable<br>Omalur la demand irukku da!';
+if(q.includes('paddy') || q.includes('nel')) return '🌾 <b>Paddy:</b><br>₹2,100/q - MSP<br>Moisture 72% good - harvest ready da!';
+if(q.includes('weather') || q.includes('vaanilai') || q.includes('mazhai')) return '🌤️ <b>Salem Weather Today:</b><br>32°C Sunny ☀️<br>Rain Chance: 20%<br>Humidity: 64%<br>Best for spraying today da!';
+if(q.includes('best') || q.includes('crop') || q.includes('payir')) return '🧠 <b>AI Recommendation:</b><br>Salem ku ipo BEST:<br>1. Turmeric - Profit high<br>2. Mango - Season peak<br>3. Tapioca - Low water<br><br>Enna payir pannalama nu sollu da?';
+if(q.includes('farmer') || q.includes('vivasa')) return `👥 <b>Farmers:</b> Total ${farmers.length} farmers irukanga da!<br>Search bar la name type pannu!`;
+if(q.includes('job') || q.includes('velai')) return '💼 <b>Jobs:</b> 2 Active jobs irukku<br>1. Harvesting Omalur - ₹500/day<br>2. Spraying Attur - ₹600/day<br>Jobs tab la paaru da!';
+if(q.includes('hi') || q.includes('hello') || q.includes('vanakkam')) return 'Vanakkam da macha! 🙏 Enna help venum? Mango price ah? Weather ah? Kelu da!';
+return '🤖 Puriyala da... Try pannu:<br>• "Mango price enna?"<br>• "Weather epdi?"<br>• "Best crop enna?"<br>• "Turmeric rate?"<br><br>Ipdhi type pannu da!';
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+[
+  {"id": 1, "crop": "Paddy", "price": 2350, "market": "Thanjavur Mandi", "date": "2026-05-13"},
+  {"id": 2, "crop": "Coconut", "price": 3800, "market": "Pattukkottai Mandi", "date": "2026-05-13"},
+  {"id": 3, "crop": "Banana", "price": 1800, "market": "Trichy Mandi", "date": "2026-05-13"}
+]

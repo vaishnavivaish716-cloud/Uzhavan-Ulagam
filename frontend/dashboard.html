@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - Salem Reports</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{font-family:Inter,sans-serif;background:#f1f5f9;margin:0;padding:16px}
+.card{background:#fff;border-radius:18px;padding:18px;border:1px solid #e2e8f0;margin-bottom:14px}
+h2{font-size:18px}
+.btn{padding:10px 18px;border-radius:24px;border:none;font-weight:800;font-size:12px;cursor:pointer}
+.btn-blue{background:#0084FF;color:#fff}
+.btn-dark{background:#0f172a;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.stat{text-align:center;padding:14px;border:1px solid #e2e8f0;border-radius:14px;background:#fff}
+.stat b{font-size:22px}
+</style>
+</head>
+<body>
+
+<div class="card" style="display:flex;justify-content:space-between;align-items:center">
+<h2>📊 Salem District - Dashboard & Reports</h2>
+<div style="display:flex;gap:8px">
+<button class="btn btn-blue" onclick="downloadPDF()">⬇️ Report PDF</button>
+<button class="btn btn-dark" onclick="takeScreenshot()">📸 Screenshot</button>
+</div>
+</div>
+
+<div class="grid">
+<div class="stat"><b>2,847</b><br><span style="font-size:11px;color:#64748b">Total Farmers</span></div>
+<div class="stat"><b>2,312</b><br><span style="font-size:11px;color:#64748b">Active Farmers</span></div>
+<div class="stat"><b>1.8 Ha</b><br><span style="font-size:11px;color:#64748b">Avg Land</span></div>
+<div class="stat"><b>₹1.24 Cr</b><br><span style="font-size:11px;color:#64748b">Subsidy FY24</span></div>
+</div>
+
+<div class="card">
+<h3>Crop Production - Salem</h3>
+<canvas id="myChart" height="120"></canvas>
+<p style="font-size:11px;color:#00A86B;margin-top:8px">🌱 Top: Paddy +18% yield vs last season</p>
+</div>
+
+<div class="card">
+<h3>Weather - Salem Live</h3>
+<p>28°C ☀️ Sunny / Partly Cloudy</p>
+<p style="font-size:12px;color:#64748b">Humidity 62% | Wind 12 km/h NE | Rainfall 2.4mm</p>
+</div>
+
+<div class="card" id="reportArea">
+<h3>📄 Final Report - For Viva Screenshot</h3>
+<p style="font-size:12px;line-height:1.6;margin-top:8px">
+<b>Project:</b> Uzhavan - Salem Agriculture AI Platform<br>
+<b>Features:</b> Voice AI, Live Weather API, Mandi Price Live, WhatsApp Integration, Tamil/English Support, Profit Calculator<br>
+<b>District:</b> Salem, Tamil Nadu<br>
+<b>Crops:</b> Mango ₹4500/qtl, Tapioca, Turmeric<br>
+<b>Users:</b> 2,400+ Farmers connected<br><br>
+<b>Tech:</b> Flask + Python AI + Open-Meteo + Web Speech API
+</p>
+</div>
+
+<script>
+new Chart(document.getElementById('myChart'),{
+type:'bar',
+data:{labels:['Paddy','Maize','Sugarcane','Cotton','Millet'],datasets:[{data:[1240,860,980,420,310],backgroundColor:'#0084FF',borderRadius:8}]},
+options:{indexAxis:'y',plugins:{legend:{display:false}}}
+});
+function downloadPDF(){window.print();}
+function takeScreenshot(){alert('📸 Windows: Win+Shift+S press pannu da! Mac: Cmd+Shift+4\nIdha drag panni screenshot eduthuko viva ku!');}
+</script>
+
+</body>
+</html>

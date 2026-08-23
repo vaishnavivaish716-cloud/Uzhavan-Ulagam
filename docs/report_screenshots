@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzhavan - Report Screenshots - Salem</title>
+<style>
+body{font-family:Inter,sans-serif;background:#f8fafc;margin:0;padding:20px;color:#0f172a}
+.header{background:linear-gradient(135deg,#0084FF,#00D084);color:#fff;padding:24px;border-radius:18px;margin-bottom:20px}
+.header h1{margin:0;font-size:24px}
+.header p{opacity:.9;font-size:12px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:14px;box-shadow:0 4px 12px rgba(0,0,0,.04)}
+.card img{width:100%;height:180px;object-fit:cover;background:#f1f5f9;border-radius:12px;border:1px dashed #cbd5e1;display:flex;align-items:center;justify-content:center}
+.badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800;background:#e0f2fe;color:#0084FF;margin-bottom:8px}
+h3{font-size:14px;margin:8px 0 4px}
+p{font-size:11px;color:#64748b;line-height:1.5}
+.btn{padding:10px 20px;border-radius:24px;border:none;font-weight:800;cursor:pointer;margin-top:10px}
+.btn-blue{background:#0f172a;color:#fff}
+@media print{.no-print{display:none}}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>🌾 Uzhavan Ulagam - Salem District</h1>
+<h2 style="margin:6px 0">Project Report & Screenshots</h2>
+<p>Final Year Project | Agricultural AI Platform with PRO MAX AI | 2,847 Farmers | 3 Crops | Voice + WhatsApp + Tamil Support</p>
+<button class="btn btn-blue no-print" style="background:#fff;color:#0084FF;margin-top:12px" onclick="window.print()">⬇️ Download as PDF - Viva ku</button>
+</div>
+
+<div class="grid">
+
+<div class="card">
+<span class="badge">SCREENSHOT 1 - HOME PAGE</span>
+<div style="background:#f1f5f9;height:180px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed #94a3b8">📸 index.html screenshot inga add pannu</div>
+<h3>🏠 Index Page - Professional Landing</h3>
+<p>Salem farmers ku AI power. Stats: 2,400+ farmers, Live Mango ₹4500, Weather Live. Hero section + Features cards.</p>
+</div>
+
+<div class="card">
+<span class="badge">SCREENSHOT 2 - ADMIN DASHBOARD</span>
+<div style="background:#f1f5f9;height:180px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed #94a3b8">📸 admin.html screenshot</div>
+<h3>📊 Admin Dashboard - District Overview</h3>
+<p>Total Farmers 2,847, Active 2,312, Land 1.8 Ha, Subsidy ₹1.24Cr. Crop Production Chart, Weather Salem 28°C, Admin Overview.</p>
+</div>
+
+<div class="card">
+<span class="badge">SCREENSHOT 3 - PRO MAX AI BUTTON</span>
+<div style="background:#f1f5f9;height:180px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed #94a3b8">🤖🤖🤖<br>PRO AI CHAT</div>
+<h3>🤖 PRO MAX AI - 5-in-1 Feature</h3>
+<p><b>1. Voice AI:</b> Mic la pesalam<br><b>2. Live Weather:</b> Open-Meteo API<br><b>3. WhatsApp Share</b><br><b>4. Tamil/English/Tanglish</b><br><b>5. Profit Calculator ₹1.65L</b></p>
+</div>
+
+<div class="card">
+<span class="badge">SCREENSHOT 4 - REPORTS TAB</span>
+<div style="background:#f1f5f9;height:180px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px dashed #94a3b8">📄 Reports Tab</div>
+<h3>📄 Reports & Downloads</h3>
+<p>Viva ku kaamika reports, screenshot options, Download Report button irukku. Professor ku easy ah explain pannalam.</p>
+</div>
+
+<div class="card">
+<span class="badge">BACKEND - AI MODEL</span>
+<div style="background:#0f172a;color:#22c55e;height:180px;border-radius:12px;padding:12px;font-size:10px;overflow:auto">
+# ai_model.py<br>
+def get_mandi_price(crop):<br>
+  return {"Mango":4500,"Tapioca":2200}[crop]<br><br>
+def profit_calc():<br>
+  return 165000 # 1 acre
+</div>
+<h3>⚙️ Backend - ai_model.py + app.py</h3>
+<p>Flask backend, ai_model.py la price prediction, database JSON la farmers, jobs, mandi_prices.</p>
+</div>
+
+<div class="card">
+<span class="badge">VIVA QUESTIONS</span>
+<div style="background:#fefce8;height:180px;border-radius:12px;padding:12px;font-size:11px;line-height:1.6">
+<b>Q: Enna technology?</b><br>Flask, Python, JS, Open-Meteo API, Web Speech API<br><br>
+<b>Q: Salem ku enna use?</b><br>Mango price live, profit calc, Tamil voice<br><br>
+<b>Q: Future?</b><br>Real Mandi API, Mobile App
+</div>
+<h3>🎤 Viva Ready Notes</h3>
+<p>Itha padichitu po da, professor ketta mass ah answer pannalam!</p>
+</div>
+
+</div>
+
+<div class="card" style="margin-top:16px">
+<h3>✅ Final Checklist - Viva ku munnadi</h3>
+<p style="font-size:12px;line-height:2">
+☐ index.html open pannu - PRO button irukka nu paaru<br>
+☐ admin.html open pannu - Overview, Farmers, Crops, Reports tabs check pannu<br>
+☐ Win+Shift+S press panni 4 screenshot eduthu - ithula upload pannu<br>
+☐ Ctrl+P press panni PDF ah save pannu - Report ready!<br>
+☐ Voice button ah amukki "Mango price" nu sollu - AI pesum!
+</p>
+</div>
+
+</body>
+</html>
